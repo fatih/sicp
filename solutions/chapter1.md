@@ -139,4 +139,11 @@ the if special form, because the argument `x` will be substituted with `0`
 and the sub expression `(= x 0)` yields true, which  results in returning the
 consequent value `0`
 
+### 1.6
 
+It's because of the evaluation strategy. `if` is a special form, so the
+consequent and alternative are not evaluated until the predicate is known.
+However `new-if` is a new procedure, and because Scheme uses applicate-order
+evaluation, all arguments are evaluated. What this means it, it infinitely
+evaluates `sqrt-iter`, which evaluates itself recursively until its out of
+memory.
