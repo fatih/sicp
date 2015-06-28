@@ -175,6 +175,8 @@ previous implementation):
       guess
       (sqrt-iter (improve guess x) guess x)))
 
+;; we can also define 0.001 as (/ guess 1000) to represent it as a fraction of
+;; the guess instead of an hardcoded value
 (define (good-enough? guess prev-guess)
   (< (abs (- guess prev-guess)) 0.001))
 
@@ -187,4 +189,35 @@ iterate more precisely. For large numbers it yield better because the number of
 iterations are lower than before and we are again bound to the tolerance of
 `0.001`
 
+
+## 1.8
+
+All definitions with examples:
+
+```lisp
+(define (cbrt-iter guess prev-guess x)
+  (if (good-enough? guess prev-guess)
+      guess
+      (cbrt-iter (improve x guess) guess x)))
+
+(define (improve x guess)
+  (/ (+ (/ x (square guess)) (* 2 guess)) 3))
+
+(define (good-enough? guess prev-guess)
+  (< (abs (- guess prev-guess)) (/ guess 1000)))
+
+(define (square x) (* x x))
+(define (abs x)
+  (cond ((< x 0) (- x))
+        ((> x 0) x)
+        ((= x 0) 0)))
+
+(define (cbrt x) (cbrt-iter 1.0 0.0 x))
+
+;; examples
+(cbrt 0.001)
+(cbrt 27)
+(cbrt 64)
+(cbrt 125)
+```
 
