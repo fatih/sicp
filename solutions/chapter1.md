@@ -1,4 +1,4 @@
-## 1.1:
+### 1.1
 
 ```
 -> 10
@@ -71,7 +71,7 @@ b is 4
 ```
 
 
-## 1.2:
+### 1.2
 
 
 ```lisp
@@ -80,7 +80,7 @@ b is 4
 -37/150
 ```
 
-## 1.3:
+### 1.3
 
 ```lisp
 (define (square a) (* a a))
@@ -91,7 +91,7 @@ b is 4
 ```
 
 
-## 1.4:
+### 1.4
 
 Explain:
 
@@ -108,7 +108,7 @@ it's `-`.  So our operator is the result of the compound expression, which is
 then used for adding or subtracting to the operands `a` and `b`.
 
 
-## 1.5:
+### 1.5
 
 We have a test procedure below. 
 
