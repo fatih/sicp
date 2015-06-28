@@ -14,6 +14,8 @@
 
 # Chapter 1
 
+* The convention of placing the operator to the left of the operands is known
+  as `prefix notation` or `prefix form`.
 * Looking at evaluation strategies: https://en.wikipedia.org/wiki/Evaluation_strategy
 * LISP useses applicative-order evaluation (also called call-by-value). There
   is also normal-order evaluation(called call-by-name). Applicative-order
