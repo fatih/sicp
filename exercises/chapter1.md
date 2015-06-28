@@ -90,3 +90,20 @@ b is 4
         (else (if (< b c) (square-sum a c) (square-sum a b)))))
 ```
 
+
+## 1.4:
+
+Explain:
+
+```lisp
+(define (a-plus-abs-b a b) 
+  ((if (> b 0) + -) a b))
+```
+
+Desc:
+
+We choose the operator based on the predicate value of the value `b` being
+greater than 0 or not. If `b` is positive the operator result is `+` otherwise
+it's `-`.  So our operator is the result of the compound expression, which is
+then used for adding or subtracting to the operands `a` and `b`.
+
