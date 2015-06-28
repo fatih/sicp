@@ -10,6 +10,7 @@
   I liked this better because it let me use `readline`, so all bash (emacs)
   shortcuts (like jumping to the beginning) works. Don't know if DrRacket
   support it though.
+* Solutions for each chapter can be found at: http://community.schemewiki.org/?SICP-Solutions  Nice to cross check after implementing the exercises.
 
 # Chapter 1
 
