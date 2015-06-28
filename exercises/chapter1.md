@@ -86,7 +86,7 @@ b is 4
 (define (square a) (* a a))
 (define (square-sum a b) (+ (square a) (square b)))
 (define (largest-square-sum a b c)
-  (cond ((< a b) (square-sum b c))
-        (else (square-sum a c))))
+  (cond ((< a b) (if (< a c) (square-sum b c) (square-sum a b)))
+        (else (if (< b c) (square-sum a c) (square-sum a b)))))
 ```
 
