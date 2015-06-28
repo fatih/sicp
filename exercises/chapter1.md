@@ -80,6 +80,13 @@ b is 4
 -37/150
 ```
 
+## 1.3:
 
-
+```lisp
+(define (square a) (* a a))
+(define (square-sum a b) (+ (square a) (square b)))
+(define (largest-square-sum a b c)
+  (cond ((< a b) (square-sum b c))
+        (else (square-sum a c))))
+```
 
