@@ -100,10 +100,43 @@ Explain:
   ((if (> b 0) + -) a b))
 ```
 
-Desc:
+Answer:
 
 We choose the operator based on the predicate value of the value `b` being
 greater than 0 or not. If `b` is positive the operator result is `+` otherwise
 it's `-`.  So our operator is the result of the compound expression, which is
 then used for adding or subtracting to the operands `a` and `b`.
+
+
+## 1.5:
+
+We have a test procedure below. 
+
+```lisp
+(define (p) (p)) 
+(define (test x y)
+  (if (= x 0) 0 y))
+```
+
+Evaluate the expression:
+
+```lisp
+(test 0 (p))
+```
+
+What behaviour will we observe with an interpreter that uses applicative-order evaluation?
+What behaviour will we observe with an interpreter that uses normal-order evaluation?
+
+Answer:
+
+1. If it's applicate-order evaluation it will run infinitely. Because the
+procedure with name (p) will recursively apply to itself (trying to evaluate
+itself). So the expression `(test 0 (p))` never exists, because the sub
+expression `(p)` never returns.
+
+2. If it's normal-order evaluation, it will return the `consequent` value of
+the if special form, because the argument `x` will be substituted with `0`
+and the sub expression `(= x 0)` yields true, which  results in returning the
+consequent value `0`
+
 
