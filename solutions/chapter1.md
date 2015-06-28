@@ -192,7 +192,10 @@ iterations are lower than before and we are again bound to the tolerance of
 
 ## 1.8
 
-All definitions with examples:
+All definitions with examples can be seen follow. This is exactly the same as
+with `sqrt` procedure, we only changed the `improve` procedure with the
+procedure given in the book. The follow definitions also includes the guess
+improvement from the following example (1.7)
 
 ```lisp
 (define (cbrt-iter guess prev-guess x)
