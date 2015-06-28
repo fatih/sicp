@@ -147,3 +147,44 @@ However `new-if` is a new procedure, and because Scheme uses applicate-order
 evaluation, all arguments are evaluated. What this means it, it infinitely
 evaluates `sqrt-iter`, which evaluates itself recursively until its out of
 memory.
+
+### 1.7
+
+Two example of small and large numbers that makes it fails are:
+
+```
+(sqrt 0.000016)
+(sqrt 81234567890123)
+```
+
+The small number is failing because the square root of `0.000016` is 0.004` and
+the tolerance of `0.001` itself is enough to skew the guess, because it has
+little difference with the original value.
+
+The large number is failing because it takes a very long time to get the right
+gueest to the high number of retrievals. Why? Because substraction `0.001` from
+a very large number doesn't affect the result anymore due to floating-point
+numbers. (think of substracting `0.0001` from infinity, nothing changes right). 
+
+A better `good-enough?` precade would be (procedures that are changed from the
+previous implementation):
+
+```lisp
+(define (sqrt-iter guess prev-guess x)
+  (if (good-enough? guess prev-guess)
+      guess
+      (sqrt-iter (improve guess x) guess x)))
+
+(define (good-enough? guess prev-guess)
+  (< (abs (- guess prev-guess)) 0.001))
+
+(define (sqrt x) (sqrt-iter 1.0 0.0 x))
+```
+
+This yields better results for both small and large numbers. For small numbers
+it yield better results because we are not bound to the actuall result and can
+iterate more precisely. For large numbers it yield better because the number of
+iterations are lower than before and we are again bound to the tolerance of
+`0.001`
+
+
