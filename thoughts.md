@@ -23,5 +23,9 @@ Random thoughts while reading SICP.
   evaluation.
 * Happy to finish the first sub section (1.1). 40 pages read and I really like
   it so far.
+* DrRacket is so far so good. I like how it adjust the memory so it can
+  overcome infinite recursive calls (of course increasing is not the solution
+  :)). Because the examples or exercises grow in size I'm using more and more
+  DrRacket GUI instead of opening the REPL from the terminal.
 
 
