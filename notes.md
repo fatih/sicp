@@ -45,3 +45,14 @@ Chapter notes. Partially from the book, but mostly my own words.
 			  (sqrt-iter (improve guess))))
 		  (sqrt-iter 1.0))
 
+* We call processes `recursive process` if the process builds up a chain of
+  deferred operations. In this case the interpreter needs to track all
+  operations that needs to be track later. The longer the chain the more
+  informaiton needs to be maintained.
+* We cal processes `iterative process` if the process can be described at any
+  point. The state at any point can be summarized by a fixed number of state
+  variables 
+* IMPORTANT: Both two processes are `recursive procedures`. `Recursive
+  procedure` is about the syntax, means the procedure is refering to itself,
+  however `recursive process` is about how the process evolves. That's why
+  `iterative` process might be seen confusing, but it's not.

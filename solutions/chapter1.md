@@ -224,3 +224,46 @@ improvement from the following example (1.7)
 (cbrt 125)
 ```
 
+## 1.9
+
+```lisp
+(define (+ a b)
+  (if (= a 0) b (inc (+ (dec a) b))))
+```
+
+(I've forgot to depict the `dec` expressions)
+
+```
+(+ 4 5)
+(inc (+ 3 5))
+(inc (inc (+ 2 5)))
+(inc (inc (inc (+ 1 5))))
+(inc (inc (inc (inc (+ 0 5)))))
+(inc (inc (inc (inc (5)))))
+(inc (inc (inc (6))))
+(inc (inc (7)))
+(inc (8))
+9
+```
+
+```lisp
+(define (+ a b)
+  (if (= a 0) b (+ (dec a) (inc b))))
+```
+
+```
+(+ 4 5) 
+(+ (dec 4) (inc 5)) 
+(+ 3 6) 
+(+ (dec 3) (inc 6)) 
+(+ 2 7) 
+(+ (dec 2) (inc 7)) 
+(+ 1 8) 
+(+ (dec 1) (inc 8)) 
+(+ 0 9) 
+9
+```
+
+As seen above, the first process is recursive (it defers the operation of inc).
+The second process is iterative as the state is known at any point.
+
