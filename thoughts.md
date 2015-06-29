@@ -21,5 +21,7 @@ Random thoughts while reading SICP.
   the operator ourselfs. And 1.5 because it shows elegantly how a language's
   evaluation strategy is defined in terms of applicate-order and name-order
   evaluation.
+* Happy to finish the first sub section (1.1). 40 pages read and I really like
+  it so far.
 
 
