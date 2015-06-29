@@ -21,3 +21,27 @@ Chapter notes. Partially from the book, but mostly my own words.
 * It's awesome we can create predicates our self. An example from the book:
 
 		(define (>= x y) (or (> x y) (= x y)))
+
+* Most of the black-box examples are already well known for me
+* We can encapsulate definitions under a definition. This is called `block
+  structure`. We can also omit variable passing to the internal definitions, by
+  just not to pass and change the formal parameters of the internal definitions.
+  So if the procedure has a variable `x` and there are internal (privates)
+  definitions in the block structure requring it, we just remove them. `x` will
+  be then a `free variable` for the internal definitions, but a `bound variable`
+  for the procedure itself. This is called `lexical scoping`. Basically in `Go`
+  terms, we create a function and several anonymous functions, which all capture
+  the argument for the inital function. An example for `block structure` and
+  `lexical scoping` from the book is:
+
+		(define (sqrt x)
+		  (define (good-enough? guess)
+			(< (abs (- (square guess) x)) 0.001)) 
+		  (define (improve guess)
+			(average guess (/ x guess))) 
+		  (define (sqrt-iter guess)
+			(if (good-enough? guess) 
+			  guess
+			  (sqrt-iter (improve guess))))
+		  (sqrt-iter 1.0))
+
