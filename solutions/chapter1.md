@@ -267,3 +267,72 @@ improvement from the following example (1.7)
 As seen above, the first process is recursive (it defers the operation of inc).
 The second process is iterative as the state is known at any point.
 
+## 1.10
+
+I've didn't just plugged into the interpreter, instead tried to get the idea
+behind it. Checkout the Wikipedia page for Ackermann function's, it's really
+beautiful: https://en.wikipedia.org/wiki/Ackermann_function
+
+Answers are:
+
+
+```lisp
+(A 1 10)
+```
+
+This definition expands into `(A (0) (A (0) (A (0) ...)))` up to 10 times. The
+latest expression will be `(A 1 1)` which evaluates to 2. So this means we are
+multiplying the value `2` up to 10 times. So it's basically `2 ^ 10` -> `1024`
+
+
+```lisp
+(A 2 4)
+```
+
+This definition evaluates into `(A 1 (A 1 4))` after a couple of iterations.
+Because we know that `(A 1 N)` is equal to `2 ^ N` (from the previous
+procedure), this simplifies to `(A 1 16)` (because (A 1 4) is equal to `2^4` ->
+16). So basically  we end up with `(A 1 16)`, which is `2 ^ 16` -> `65536`
+
+
+```lisp
+(A 3 3)
+```
+
+This definition evalutes into `(A 2 (A 2 (A 3 1)))` after a couple of
+iterations. Which is then evaluated as `(A 2 (A 2 2))`. Evaluating `(A 2 2)`
+gives us 4, so the final form is `(A 2 4)` which is the same as the previous
+example. So the result is `2 ^ 16` -> `65536`
+
+
+Define the following procedures as mathematical definitions:
+
+
+```lisp
+(define (f n) (A 0 n)) 
+```
+This is very easy because it always calls the expression `2*y`, so this is mathetmically: `2n`
+
+
+```lisp
+(define (g n) (A 1 n)) 
+```
+This is also known (from the previous definitions), we can define it as: `2^n`
+
+
+```lisp
+(define (h n) (A 2 n)) 
+```
+
+We have already two solutions from the above, adding the rest we got
+
+```
+(A 2 1) -> 2
+(A 2 2) -> 4
+(A 2 3) -> 16
+(A 2 4) ->  65536
+```
+
+Looking carefuly we can see this all about the power of two. So it's basically: `2^2^2...` n times
+
+All the definitions above are invalid of `n < 0` and `0` for the case `n = 0`

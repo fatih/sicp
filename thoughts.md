@@ -27,5 +27,13 @@ Random thoughts while reading SICP.
   overcome infinite recursive calls (of course increasing is not the solution
   :)). Because the examples or exercises grow in size I'm using more and more
   DrRacket GUI instead of opening the REPL from the terminal.
+* There are video lectures from MIT (The author of SICP itself) which is
+  teaching SICP to a handful of HP enginners in the 1980's. It's called: `MIT
+  6.001 Structure and Interpretation, 1986` and can be find on Youtube and OCW
+  (example: https://www.youtube.com/watch?v=2Op3QLzMgSY)
+* Learned [Ackermann's
+  Function](https://en.wikipedia.org/wiki/Ackermann_function). It's being used
+  to benchmark a compilers ability of optimizing recursion. The reason for it is
+  the extreme deep recursion (for even very low values)
 
 
