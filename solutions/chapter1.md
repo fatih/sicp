@@ -336,3 +336,40 @@ We have already two solutions from the above, adding the rest we got
 Looking carefuly we can see this all about the power of two. So it's basically: `2^2^2...` n times
 
 All the definitions above are invalid of `n < 0` and `0` for the case `n = 0`
+
+## 1.11
+
+Recursive process
+
+```lisp
+(define (f n)
+  (cond ((< n 3) n)
+        (else (+ (f (- n 1))
+                 (* 2 (f (- n 2)))
+                 (* 3 (f (- n 3)))))))
+```
+
+
+For iterative process, we do the same as it's been done previously with the
+Fibonnaci example. In this cases the states are:
+
+a <- a + 2b + 3c
+b <- a
+c <- b
+
+We shortcut for cases `n < 3`, for any other the iterative process (the
+`f-iter` procedure) takes effect.
+
+```lisp
+(define (f n)
+  (if (< n 3)
+      n
+      (f-iter 2 1 0 n)))
+
+(define (f-iter a b c count)
+  (if (= count 2)
+      a
+      (f-iter (+ a ( * 2 b) (* 3 c)) a b (- count 1))))
+```
+
+
