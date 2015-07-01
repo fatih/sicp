@@ -41,5 +41,9 @@ Random thoughts while reading SICP.
   actually very simple if you depict it. It's using tree recursion and shows
   how elegant (but very inefficient) it can be solved. It seems visualizations
   helps me to understand things more faster.
+* Exercise 1.11 was hard to solve. I've never thought writing it similar to the
+  iterative Fibonnaci solution. Eventually I solved it after many hours (didn't
+  gave up :). So looking afterwards I've found a great answer to it here:
+  http://stackoverflow.com/a/2366209/462233
 
 
