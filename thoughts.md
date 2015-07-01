@@ -31,9 +31,11 @@ Random thoughts while reading SICP.
   teaching SICP to a handful of HP enginners in the 1980's. It's called: `MIT
   6.001 Structure and Interpretation, 1986` and can be find on Youtube and OCW
   (example: https://www.youtube.com/watch?v=2Op3QLzMgSY)
-* Learned [Ackermann's
-  Function](https://en.wikipedia.org/wiki/Ackermann_function). It's being used
-  to benchmark a compilers ability of optimizing recursion. The reason for it is
-  the extreme deep recursion (for even very low values)
+* Learned [Ackermann's Function](https://en.wikipedia.org/wiki/Ackermann_function). 
+  It's being used to benchmark a compilers ability of optimizing recursion. The
+  reason for it is the extreme deep recursion (for even very low values)
+* The book get's more and more mathematical (I think this is due Harold
+  Abelson's background). I like it very much as it remembers the old days in
+  University while studying EE.
 
 
