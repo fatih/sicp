@@ -6,7 +6,7 @@ Chapter notes. Partially from the book, but mostly my own words.
 * The convention of placing the operator to the left of the operands is known
   as `prefix notation` or `prefix form`.
 * Looking at evaluation strategies: https://en.wikipedia.org/wiki/Evaluation_strategy
-* LISP useses applicative-order evaluation (also called call-by-value). There
+* LISP uses applicative-order evaluation (also called call-by-value). There
   is also normal-order evaluation(called call-by-name). Applicative-order
   evaluation is more efficient, because it avoids multiple evaluations of
   expressions. It evaluates the arguments first and applies the resulting
@@ -27,11 +27,11 @@ Chapter notes. Partially from the book, but mostly my own words.
   structure`. We can also omit variable passing to the internal definitions, by
   just not to pass and change the formal parameters of the internal definitions.
   So if the procedure has a variable `x` and there are internal (privates)
-  definitions in the block structure requring it, we just remove them. `x` will
+  definitions in the block structure requiring it, we just remove them. `x` will
   be then a `free variable` for the internal definitions, but a `bound variable`
   for the procedure itself. This is called `lexical scoping`. Basically in `Go`
   terms, we create a function and several anonymous functions, which all capture
-  the argument for the inital function. An example for `block structure` and
+  the argument for the initial function. An example for `block structure` and
   `lexical scoping` from the book is:
 
 		(define (sqrt x)
@@ -48,11 +48,16 @@ Chapter notes. Partially from the book, but mostly my own words.
 * We call processes `recursive process` if the process builds up a chain of
   deferred operations. In this case the interpreter needs to track all
   operations that needs to be track later. The longer the chain the more
-  informaiton needs to be maintained.
+  information needs to be maintained.
 * We cal processes `iterative process` if the process can be described at any
   point. The state at any point can be summarized by a fixed number of state
   variables 
 * IMPORTANT: Both two processes are `recursive procedures`. `Recursive
-  procedure` is about the syntax, means the procedure is refering to itself,
+  procedure` is about the syntax, means the procedure is referring to itself,
   however `recursive process` is about how the process evolves. That's why
   `iterative` process might be seen confusing, but it's not.
+* Another pattern is called `tree recursion` (example would be implementing a
+  straight forward Fibonacci implementation). The number of steps required by a
+  tree-recursive process will be proportional to the number of nodes in the
+  three, while the space required will be proportional to the maximum depth for
+  the tree.

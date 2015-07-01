@@ -37,5 +37,9 @@ Random thoughts while reading SICP.
 * The book get's more and more mathematical (I think this is due Harold
   Abelson's background). I like it very much as it remembers the old days in
   University while studying EE.
+* The counting change example did take a lot of time to understand. It's
+  actually very simple if you depict it. It's using tree recursion and shows
+  how elegant (but very inefficient) it can be solved. It seems visualizations
+  helps me to understand things more faster.
 
 
