@@ -372,4 +372,21 @@ We shortcut for cases `n < 3`, for any other the iterative process (the
       (f-iter (+ a ( * 2 b) (* 3 c)) a b (- count 1))))
 ```
 
+## 1.12
+
+I understand that by computing the element it means to get an element from a
+given row and column. The solution below assumes the row and column index
+starts from `0` (convention from: https://en.wikipedia.org/wiki/Pascal's_triangle)
+
+
+```lisp
+(define (pascal row col)
+  (cond ((< row col) 0)
+        ((< col 0) 0)
+        ((= col 0) 1)
+        ((= row 0) 1)
+        (else (+
+               (pascal (- row 1) (- col 1))
+               (pascal (- row 1) col)))))
+```
 
