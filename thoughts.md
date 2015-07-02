@@ -45,5 +45,6 @@ Random thoughts while reading SICP.
   iterative Fibonnaci solution. Eventually I solved it after many hours (didn't
   gave up :). So looking afterwards I've found a great answer to it here:
   http://stackoverflow.com/a/2366209/462233
+* Didn't know that the exercises would take so much time.
 
 
