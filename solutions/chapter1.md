@@ -378,13 +378,21 @@ I understand that by computing the element it means to get an element from a
 given row and column. The solution below assumes the row and column index
 starts from `0` (convention from: https://en.wikipedia.org/wiki/Pascal's_triangle)
 
+The degenerate cases are:
+
+* We assume every negative column index to be `0` (so each `0` index colum can
+  produce `1`)
+* We assume every column index greater than row index to be `0` (so each `row
+  == col` case produces a `1`)
+* We assume that column 0 is always 1. This is our state value which carried
+  with each recursive process
+
 
 ```lisp
 (define (pascal row col)
   (cond ((< row col) 0)
         ((< col 0) 0)
         ((= col 0) 1)
-        ((= row 0) 1)
         (else (+
                (pascal (- row 1) (- col 1))
                (pascal (- row 1) col)))))
