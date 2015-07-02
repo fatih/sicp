@@ -398,3 +398,30 @@ The degenerate cases are:
                (pascal (- row 1) col)))))
 ```
 
+## 1.13
+
+1. Fib(n) is the closest integer to `q^n /  sqrt 5`. So if we pass `1` and `2` for
+`n`, and divide each other we get `q`:
+
+```
+Fib(2)/Fib(1) = q
+```
+
+So this means basically
+
+```
+Fib(n + 1)/Fib(n) = q
+```
+
+As seen below, with every high `n` value it satisfies the equation
+
+```
+(/ (fib 8) (fib 7))   -> 1.5384
+(/ (fib 10) (fib 9))  -> 1.617647
+(/ (fib 11) (fib 10)) -> 1.618
+```
+
+
+2. I've skipped the induction proof as it should be straight forward to assume
+   for certain cases of n (`0`, `1`, `2`, etc..) and do the proof.
+
