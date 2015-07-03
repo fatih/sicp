@@ -57,7 +57,7 @@ Random thoughts while reading SICP.
   and functions.
 * Sometimes you need to reach another book so you can understand what SICP
   really means. For example "order of growth of the space" means `space
-  complexity` and `the number of steps required for the process` means `time
+  complexity` and "the number of steps required for the process" means `time
   complexity`. I know that they are fairly the same, however in `1.2.3`, time
   complexity was not even a headline. It was just buried in a line which you
   barely think it's something important. But each additional question was about

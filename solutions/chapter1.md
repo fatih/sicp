@@ -441,6 +441,7 @@ draw it on a paper. As seen there are four possibilities:
 
 Diagram:
 
+```
 ; cc 11 5
 ;    |    \
 ; cc 11 4  cc -39 5
@@ -472,26 +473,25 @@ Diagram:
 ;                                                                           cc 2 0  cc 1 1
 ;                                                                                      |   \
 ;                                                                                   cc 1 0  cc 0 1
+```
 
 The question is asking for:
 
-1. Order of growth of the space (Space complexity)
+1. Order of growth of the space (Space complexity): The order of growth is
+   increasing linearly because the depth of the tree is increasing linearly.
+   Basically we only keep track of the trail nodes. So answer is `Θ(n)`
 
-The order of growth is increasing linearly because the depth of the tree is
-increasing linearly. Basically we only keep track of the trail nodes. So answer
-is `Θ(n)`
-
-2. Number of steps used as the amount to be changed increases (Time complexity)
-
-This requires a more formal mathematic proof. But looking carefully and we can
-see from the diagram that there is a new leaf for each new first kind of coin.
-So basically because we have `5` kinds of coins, it'll be `Θ(n^5)`
-I've found a better explanation here too:
-http://www.billthelizard.com/2009/12/sicp-exercise-114-counting-change.html
+2. Number of steps used as the amount to be changed increases (Time
+   complexity): This requires a more formal mathematic proof. But looking
+   carefully and we can see from the diagram that there is a new leaf for each new
+   first kind of coin.  So basically because we have `5` kinds of coins, it'll be
+   `Θ(n^5)` I've found a better explanation here too:
+   http://www.billthelizard.com/2009/12/sicp-exercise-114-counting-change.html
 
 ## 1.15
 
 a.) `p` will be applied 5 times
+
 b.) First of all because the procedure is a recursive process, the interpreter
 only keeps a fixed result to be applied to `p`. It also requires a fixed number
 of steps. The order of growth (space complexity) is increasing logarithmic
