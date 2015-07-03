@@ -61,3 +61,8 @@ Chapter notes. Partially from the book, but mostly my own words.
   tree-recursive process will be proportional to the number of nodes in the
   three, while the space required will be proportional to the maximum depth for
   the tree.
+* There are two growths, one is the order of growth in space, the other one is
+  the required number of steps. They are called `space complexity` and `time
+  complexity`. So the better the time complexity of an algorithm is, the faster
+  the algorithm is. In `space complexity`, the number of space required is low
+  the better the algorithm is.
