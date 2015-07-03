@@ -425,3 +425,81 @@ As seen below, with every high `n` value it satisfies the equation
 2. I've skipped the induction proof as it should be straight forward to assume
    for certain cases of n (`0`, `1`, `2`, etc..) and do the proof.
 
+
+## 1.14
+
+Below is an ASCII drawing of `(count-change 11 5)`. This is taken from another
+[place](https://github.com/martinblech/sicp/blob/master/01/1.14.scm) as I did
+draw it on a paper. As seen there are four possibilities:
+
+```
+10 + 1
+5 + 5 + 1
+5 + 1 + 1 + 1 + 1 + 1 + 1
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
+```
+
+Diagram:
+
+; cc 11 5
+;    |    \
+; cc 11 4  cc -39 5
+;    |    \
+; cc 11 3  cc -14 4
+;    |    \----------------------------------------\
+; cc 11 2                                           cc 1 3
+;    |    \------------------------\                   |   \
+; cc 11 1                           cc 6 2          cc 0 3  cc -9 3
+;    |    \                            |   \---------------\
+; cc 11 0  cc 10 1                  cc 6 1                  cc 1 2
+;             |    \                   |   \                   |   \
+;          cc 10 0  cc 9 1          cc 6 0  cc 5 1          cc 0 2  cc -4 2
+;                      |   \                   |   \
+;                   cc 9 0  cc 8 1          cc 5 0  cc 4 1
+;                              |   \                   |   \
+;                           cc 8 0  cc 7 1          cc 4 0  cc 3 1
+;                                      |   \                   |   \
+;                                   cc 7 0  cc 6 1          cc 3 0  cc 2 1
+;                                              |   \                   |   \
+;                                           cc 6 0  cc 5 1          cc 2 0  cc 1 1
+;                                                      |   \                   |   \
+;                                                   cc 5 0  cc 4 1          cc 1 0  cc 0 1
+;                                                              |   \
+;                                                           cc 4 0  cc 3 1
+;                                                                      |   \
+;                                                                   cc 3 0  cc 2 1
+;                                                                              |   \
+;                                                                           cc 2 0  cc 1 1
+;                                                                                      |   \
+;                                                                                   cc 1 0  cc 0 1
+
+The question is asking for:
+
+1. Order of growth of the space (Space complexity)
+
+The order of growth is increasing linearly because the depth of the tree is
+increasing linearly. Basically we only keep track of the trail nodes. So answer
+is `Θ(n)`
+
+2. Number of steps used as the amount to be changed increases (Time complexity)
+
+This requires a more formal mathematic proof. But looking carefully and we can
+see from the diagram that there is a new leaf for each new first kind of coin.
+So basically because we have `5` kinds of coins, it'll be `Θ(n^5)`
+I've found a better explanation here too:
+http://www.billthelizard.com/2009/12/sicp-exercise-114-counting-change.html
+
+## 1.15
+
+a.) `p` will be applied 5 times
+b.) First of all because the procedure is a recursive process, the interpreter
+only keeps a fixed result to be applied to `p`. It also requires a fixed number
+of steps. The order of growth (space complexity) is increasing logarithmic
+(just like a binary-tree search), as we divide it each time until we stop when
+the absolute difference of a is smaller than `0.1` So it is `theta(a)`. The
+number of steps (time complexity) is also the same (logarithmic increase)
+
+
+
+
+
