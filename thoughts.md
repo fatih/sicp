@@ -46,5 +46,14 @@ Random thoughts while reading SICP.
   gave up :). So looking afterwards I've found a great answer to it here:
   http://stackoverflow.com/a/2366209/462233
 * Didn't know that the exercises would take so much time.
+* I've read the paper
+  http://cs.brown.edu/~sk/Publications/Papers/Published/fffk-htdp-vs-sicp-journal/paper.pdf
+  which explains the tradeoff's of reading SICP and recommends instead of HTDP
+  (How to design programs). For example it says that SICP is not for beginners
+  as it asks questions from other domains and needs additional time to learn
+  that domains knowledge. I partially agree with it as it's get more and more
+  mathematical. By mathematical, I don't mean the usage of mathematical and
+  well understood tools, instead I'm meaning examples about mathematical proofs
+  and functions.
 
 
