@@ -55,5 +55,14 @@ Random thoughts while reading SICP.
   mathematical. By mathematical, I don't mean the usage of mathematical and
   well understood tools, instead I'm meaning examples about mathematical proofs
   and functions.
+* Sometimes you need to reach another book so you can understand what SICP
+  really means. For example "order of growth of the space" means `space
+  complexity` and `the number of steps required for the process` means `time
+  complexity`. I know that they are fairly the same, however in `1.2.3`, time
+  complexity was not even a headline. It was just buried in a line which you
+  barely think it's something important. But each additional question was about
+  it. So what this means for me is, SICP wants to me research very extensively
+  and do my own homework on some topics. It's not clear somehow, but I'm ok
+  with it.
 
 
