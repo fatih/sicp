@@ -554,6 +554,15 @@ multiplication in logarithmic number of steps.
         (else (+ a (double (* a (halve (- b 1))))))))
 ```
 
+Just discovered that the else branch can be simplified:
+
+```lisp
+(define (* a b)
+  (cond ((= b 1) a)
+        ((even? b) (double (* a (halve b))))
+        (else (+ a (* a (- b 1))))))
+```
+
 ## 1.18
 
 A iterative process using `double`, `halve` which uses logarithmic number of
