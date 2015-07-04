@@ -539,4 +539,39 @@ iterative.
 
 
 
+## 1.17
+
+Below is a recursive process of using `double` and `halve` to implement
+multiplication in logarithmic number of steps.
+
+```lisp
+(define (double n) ( + n n)) ;; I assume * is not available
+(define (halve n) (/ n 2))
+
+(define (* a b)
+  (cond ((= b 1) a)
+        ((even? b) (double (* a (halve b))))
+        (else (+ a (double (* a (halve (- b 1))))))))
+```
+
+## 1.18
+
+A iterative process using `double`, `halve` which uses logarithmic number of
+steps. So doubling the input size will increase the computing step only by one.
+The below procedures are similar to the previous `fast-expt` procedures which
+uses the `invariant quantity` described in the book.
+
+```lisp
+(define (double n) ( + n n)) ;; I assume * is not available
+(define (halve n) (/ n 2))
+
+(define (* a b) (mul-iter 0 a b))
+
+(define (mul-iter a x y)
+  (cond (( = y 0) a)
+        ((even? y) (mul-iter a (double x) (halve y)))
+        (else (mul-iter (+ a x) x (- y 1)))))
+```
+  
+
 

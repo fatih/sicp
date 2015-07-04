@@ -64,5 +64,9 @@ Random thoughts while reading SICP.
   it. So what this means for me is, SICP wants to me research very extensively
   and do my own homework on some topics. It's not clear somehow, but I'm ok
   with it.
+* Damn, now I'm thinking in terms of iterative process when trying to implement
+  a recursive procedure. I've solved 1.17 with an iterative based approach, and
+  1.18 was asking explicit for it, now I have to implement 1.17 again but this
+  time with a recursive process.
 
 
