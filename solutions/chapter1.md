@@ -499,6 +499,43 @@ of steps. The order of growth (space complexity) is increasing logarithmic
 the absolute difference of a is smaller than `0.1` So it is `theta(a)`. The
 number of steps (time complexity) is also the same (logarithmic increase)
 
+## 1.16
+
+I had the solution like below (without using `a` at all)
+
+```lisp
+(define (square n) (* n n))
+         
+(define (expt b n)
+  (if (even? n)
+      (fast-expt-iter b n)
+      (* b (fast-expt-iter b (- n 1)))))
+
+(define (fast-expt-iter b counter)
+  (if (= counter 1)
+      b
+      (fast-expt-iter (square b) (/ counter 2))))
+```
+
+However I believe the solution above is not iterative process, because for a
+non even (odd) case it stores the `b` before it continue. I'm not quite sure
+here, so I would be happy if anyone reading this can clarify it.
+
+Another solution would be using `cond` and doing the converting of `odd ->
+even` via the `a` parameter. This is much more elegant of course and truly
+iterative.
+
+```lisp
+
+(define (square n) (* n n))
+         
+(define (expt b n) (fast-expt-iter 1 b n))
+
+(define (fast-expt-iter a b counter)
+  (cond ((= counter 0) a)
+        ((even? counter) (fast-expt-iter a (square b) (/ counter 2)))
+        (else (fast-expt-iter (* a b) b (- counter 1)))))
+```
 
 
 
