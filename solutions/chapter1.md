@@ -299,7 +299,7 @@ procedure), this simplifies to `(A 1 16)` (because (A 1 4) is equal to `2^4` ->
 (A 3 3)
 ```
 
-This definition evalutes into `(A 2 (A 2 (A 3 1)))` after a couple of
+This definition evaluates into `(A 2 (A 2 (A 3 1)))` after a couple of
 iterations. Which is then evaluated as `(A 2 (A 2 2))`. Evaluating `(A 2 2)`
 gives us 4, so the final form is `(A 2 4)` which is the same as the previous
 example. So the result is `2 ^ 16` -> `65536`
@@ -311,7 +311,7 @@ Define the following procedures as mathematical definitions:
 ```lisp
 (define (f n) (A 0 n)) 
 ```
-This is very easy because it always calls the expression `2*y`, so this is mathetmically: `2n`
+This is very easy because it always calls the expression `2*y`, so this is mathematically: `2n`
 
 
 ```lisp
@@ -333,7 +333,7 @@ We have already two solutions from the above, adding the rest we got
 (A 2 4) ->  65536
 ```
 
-Looking carefuly we can see this all about the power of two. So it's basically: `2^2^2...` n times
+Looking carefully we can see this all about the power of two. So it's basically: `2^2^2...` n times
 
 All the definitions above are invalid of `n < 0` and `0` for the case `n = 0`
 
@@ -583,4 +583,36 @@ uses the `invariant quantity` described in the book.
 ```
   
 
+## 1.19
 
+The substitution is below:
+
+![1.19](solutions/1_19.pdf)
+
+So this means we have the following for `p'` and `q'`:
+
+```
+p' = p^2 + q^2
+q' = 2pq + q^2
+```
+
+So the final solution would be:
+
+```lisp
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+
+(define (fib-iter a b p q count)
+  (cond ((= count 0) b)
+        ((even? count)
+         (fib-iter a
+                   b
+                   (+ (* p p) (* q q))
+                   (+ ( * 2 p q) (* q q))
+                   (/ count 2)))
+        (else (fib-iter (+ (* b q) (* a q) (* a p))
+                        (+ (* b p) (* a q))
+                        p
+                        q
+                        (- count 1)))))
+```
