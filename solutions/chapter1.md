@@ -616,3 +616,75 @@ So the final solution would be:
                         q
                         (- count 1)))))
 ```
+
+
+## 1.20
+
+The procedure is like below:
+
+```lisp
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+```
+
+Now using first `normal-order evaluation`
+
+```
+(gcd 206 40)
+  (if (= 40 0)
+      a
+	  (gcd 40 (remainder 206 40))
+
+(gcd 40 (remainder 206 40)
+  (if (= (remainder 206 40) 0)) ;; 6
+      40
+	  (gcd (remainder 206 40) (remainder 40 (remainder 206 40))))
+
+
+(gcd (remainder 206 40) (remainder 40 (remainder 206 40))
+  (if (= (remainder 40 (remainder 206 40)) 0) ;; 4
+      (remainder 206 40)
+      (gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))))
+
+      
+(gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+  (if (= (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) 0) ;; 2
+      (remainder 40 (remainder 206 40))
+      (gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))))))
+
+
+(gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+  (if (= (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) 0) ;; 0
+      (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+      (gcd ...)))
+```
+
+So now for every `if` branch we evaluate the `predicate` expression first and
+then decide if whether to evaluate the `consequent` or the `alternative`
+expression. This means every if `predicate` is evaluated until it's equal to
+`0` and we exit with evaluating the `consequent`. Now counting all `if`
+predicate expressions until it's hit `0`:
+
+```
+1 -> (if (= (remainder 206 40) 0))
+2 -> (if (= (remainder 40 (remainder 206 40)) 0)
+4 -> (if (= (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) 0)
+7 -> (if (= (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) 0)
+```
+
+So from the `if` forms we got total: `14`
+
+After that what left is the consequent expression which is:
+
+```lisp
+(remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+```
+
+From here we have total: `4`
+
+So the final answer for normal-value evaluation is: `18`
+
+
+
