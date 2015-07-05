@@ -682,9 +682,33 @@ After that what left is the consequent expression which is:
 (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
 ```
 
-From here we have total: `4`
+From here we have total: `4` So the final answer for normal-value evaluation
+is: **18**
 
-So the final answer for normal-value evaluation is: `18`
 
+Now let use `applicative-order evaluation`. This is much more easier to
+illustrate as we evaluate the expression each time:
+
+```lisp
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+```
+
+```
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 40 6)
+(gcd 6 (remainder 40 6))
+(gcd 6 4)
+(gcd 4 (remainder 6 4))
+(gcd 4 2)
+(gcd 2 (remainder 4 2))
+(gcd 2 0)
+2
+```
+
+So for `applicative-order evaluation` we evaluate `remainder` in total **4** times.
 
 
