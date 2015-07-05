@@ -587,7 +587,7 @@ uses the `invariant quantity` described in the book.
 
 The substitution is below:
 
-![1.19](solutions/1_19.pdf)
+![1.19](1_19.pdf)
 
 So this means we have the following for `p'` and `q'`:
 
