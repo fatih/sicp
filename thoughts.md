@@ -42,7 +42,7 @@ Random thoughts while reading SICP.
   how elegant (but very inefficient) it can be solved. It seems visualizations
   helps me to understand things more faster.
 * Exercise 1.11 was hard to solve. I've never thought writing it similar to the
-  iterative Fibonnaci solution. Eventually I solved it after many hours (didn't
+  iterative Fibonacci solution. Eventually I solved it after many hours (didn't
   gave up :). So looking afterwards I've found a great answer to it here:
   http://stackoverflow.com/a/2366209/462233
 * Didn't know that the exercises would take so much time.
@@ -68,5 +68,8 @@ Random thoughts while reading SICP.
   a recursive procedure. I've solved 1.17 with an iterative based approach, and
   1.18 was asking explicit for it, now I have to implement 1.17 again but this
   time with a recursive process.
+* I've finally get the simple find-divisor procedure. I didn't sure why we
+  would compare it with the square of the divisor. Until I read the note 44.
+  Suddenly all was clear for me and it was very enlightening. 
 
 
