@@ -68,5 +68,5 @@ Chapter notes. Partially from the book, but mostly my own words.
   the better the algorithm is.
 * We can distribute a modulos operation like: `ab mod m` == `(((a mod m) (b mod m)) mod m)`
   This is uses in the `expmod` procedure. Appereantly this is also true: 
-  `b ^ n mod n` == `((b * (b ^ (n - 1) mod n)) mod n)` not sure why...
+  `b ^ n mod m` == `((b * (b ^ (n - 1) mod m)) mod m)` not sure why...
 
