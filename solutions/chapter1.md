@@ -731,4 +731,65 @@ Answer:
 7
 ```
 
+## 1.22
 
+Below is an implementation of `search-for-primes`, which takes a range and
+iterates on only odd integers. The only ceveat it it returns `0` when finished
+which is imho wrong, however because the exercise was about calculating the
+time complexity it's not an important deal.
+
+```lisp
+(define (round n)
+  (if (divides? 2 n)
+      (+ n 1)
+      n))
+   
+(define (search-for-primes a b)
+  (define (iterate a b)
+    (cond ((> a b) 0)
+        (else
+         (timed-prime-test a)
+         (iterate (+ a 1) b))))
+  (iterate (round a) b))
+```
+
+To the the smallest primer larger than `1000` we define the range between
+`1000` and `1100` (it could be larger until we find it, but this is enough and
+even large). So for each number we choose only the minimum to capture the
+smallest primer after the given number
+
+For `1000` we have:
+
+```
+1009 *** 3
+1013 *** 3
+1019 *** 3
+```
+
+For `10,000` we have:
+
+```
+10007 *** 9
+10009 *** 9
+10037 *** 8
+```
+
+For `100,000` we have:
+
+```
+100003 *** 25
+100019 *** 24
+100043 *** 24
+```
+
+For `1,000,000` we have:
+
+```
+1000003 *** 89
+1000033 *** 72
+1000037 *** 72
+```
+
+As seen from the results the time is increasing in `sqrt n`, where n is `10`.
+So every time we increase the input by `10` the time increase by `sqrt 10`, so
+roughly by `~3.16`
