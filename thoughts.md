@@ -71,5 +71,10 @@ Random thoughts while reading SICP.
 * I've finally get the simple find-divisor procedure. I didn't sure why we
   would compare it with the square of the divisor. Until I read the note 44.
   Suddenly all was clear for me and it was very enlightening. 
+* I think I'm now proficient on understanding the procedures of checking a
+  numbers primality. SICP at its finest :) I mean It's really heavly based on
+  math. For example I've just learned a lot about modulo operations, Fermat's
+  Little Theorem, what `congruent` means, etc.. On ther other hand I really
+  like it, but it's just taking a lot of time.
 
 
