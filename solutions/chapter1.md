@@ -712,3 +712,23 @@ illustrate as we evaluate the expression each time:
 So for `applicative-order evaluation` we evaluate `remainder` in total **4** times.
 
 
+## 1.21
+
+Find the smallest divisor of the following numbers:
+
+
+```lisp
+(smallest-divisor 199)
+(smallest-divisor 1999)
+(smallest-divisor 19999)
+```
+
+Answer:
+
+```
+199
+1999
+7
+```
+
+
