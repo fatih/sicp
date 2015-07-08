@@ -734,9 +734,10 @@ Answer:
 ## 1.22
 
 Below is an implementation of `search-for-primes`, which takes a range and
-iterates on only odd integers. The only ceveat it it returns `0` when finished
-which is imho wrong, however because the exercise was about calculating the
-time complexity it's not an important deal.
+iterates on only odd integers. We substract `-2` from b so we only iterate
+between the rage, example input `100,104` would cause to only process `101`
+(`round(a)` is equal to 101) till to `103` (`round(b)` gives 105, so we down
+round it to the nearest odd number).
 
 ```lisp
 (define (round n)
@@ -746,11 +747,9 @@ time complexity it's not an important deal.
    
 (define (search-for-primes a b)
   (define (iterate a b)
-    (cond ((> a b) 0)
-        (else
-         (timed-prime-test a)
-         (iterate (+ a 1) b))))
-  (iterate (round a) b))
+    (timed-prime-test a)
+    (if (< a b) (iterate (+ a 2) b)))
+  (iterate (round a) (- (round b) 2)))
 ```
 
 To the the smallest primer larger than `1000` we define the range between
