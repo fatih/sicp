@@ -852,3 +852,69 @@ This is because previously the `if` form in the `next` procedure still
 evaluates the equalness of the input number to `2`, which adds an overhead
 generally.
 
+
+## 1.24
+
+This depends heavily on how many times we call `fast-primes?`. Because it's a
+probabilistic algorithm, it depends on how many times we want fetch. For `times
+= 5` we get the results:
+
+```
+1009 *** 9
+1013 *** 9
+1019 *** 10
+10007 *** 18
+10009 *** 11
+10037 *** 13
+100003 *** 15
+100019 *** 14
+100043 *** 16
+1000003 *** 17
+1000033 *** 17
+1000037 *** 18
+```
+
+For `times = 10` we get:
+
+```
+1009 *** 16
+1013 *** 18
+1019 *** 18
+10007 *** 29
+10009 *** 21
+10037 *** 22
+100003 *** 27
+100019 *** 36
+100043 *** 27
+1000003 *** 28
+1000033 *** 28
+1000037 *** 29
+```
+
+And for `times = 20` we get:
+
+```
+1009 *** 32
+1013 *** 33
+1019 *** 34
+10007 *** 49
+10009 *** 38
+10037 *** 62
+100003 *** 48
+100019 *** 50
+100043 *** 49
+1000003 *** 54
+1000033 *** 55
+1000037 *** 57
+```
+
+Now the change on the input every `10` factor (1000, 10000, 100000, etc...)
+changes logarithmicly.  Every time we increase the input by a factor of `10`,
+the increase in time complexity will be very very low. A multiplication in
+logarithmic sense is just a addition. So from the data above we can see every
+time the input increases by a factor 10, we only increase it by `1` (Because
+`log 10` is equal 1). 
+
+However as you see the difference is not `1` because we also execute it many
+times to get a better probability and proofnes of proving the given number to
+be a prime.  
