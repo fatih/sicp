@@ -792,3 +792,63 @@ For `1,000,000` we have:
 As seen from the results the time is increasing in `sqrt n`, where n is `10`.
 So every time we increase the input by `10` the time increase by `sqrt 10`, so
 roughly by `~3.16`
+
+## 1.23
+
+The `next` procedure and the modified `find-divisor` procedure is like below:
+
+```
+(define (next n)
+  (if (= n 2)
+      3
+      (+ n 2)))
+
+(define (find-divisor n test-divisor)
+  (cond ((> (square test-divisor) n) n)
+        ((divides? test-divisor n) test-divisor)
+        (else (find-divisor n (next test-divisor)))))
+
+(define (smallest-divisor n) (find-divisor n 2))
+```
+
+After implementing it we test it for the following prime numbers:
+
+```lisp
+(timed-prime-test 1009)
+(timed-prime-test 1013)
+(timed-prime-test 1019)
+(timed-prime-test 10007)
+(timed-prime-test 10009)
+(timed-prime-test 10037)
+(timed-prime-test 100003)
+(timed-prime-test 100019)
+(timed-prime-test 100043)
+(timed-prime-test 1000003)
+(timed-prime-test 1000033)
+(timed-prime-test 1000037)
+```
+
+The results are:
+
+```
+1009 *** 3
+1013 *** 3
+1019 *** 2
+10007 *** 5
+10009 *** 6
+10037 *** 6
+100003 *** 17
+100019 *** 17
+100043 *** 17
+1000003 *** 51
+1000033 *** 51
+1000037 *** 51
+```
+
+It didn't run twice as fast. Comparing with the previous example we can see
+that it improved by a factor of **1.5** (not *2*).
+
+This is because previously the `if` form in the `next` procedure still
+evaluates the equalness of the input number to `2`, which adds an overhead
+generally.
+
