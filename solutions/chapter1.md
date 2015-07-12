@@ -935,3 +935,15 @@ This is because of taking the square of different values.
    remainders, it takes the square of square numbers, which is increasing
    quadratic. 
 
+
+## 1.26 
+
+Because we are now evaluation the expression: `(expmod base (/ exp 2) m)` twice
+instead of once. Each evaluation causes to split another evaluation. Basically
+this is a tree recursion and grows exponentially. So the input increased to `2
+^ n`. But because we use the modulo operation of multiplication, which is
+`O(logn)`. Due the input it's now `O(log 2 ^ n)` which is `n * log 2`. So the
+order of growth is: `O(n)`
+
+
+
