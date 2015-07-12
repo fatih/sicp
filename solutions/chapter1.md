@@ -947,3 +947,27 @@ order of growth is: `O(n)`
 
 
 
+## 1.27
+
+
+```lisp
+(define (fermat-test-all n)
+  (define (try a n)
+    (cond ((= a 0) true)
+          ((= (expmod (- a 1) n n) (remainder (- a 1) n)) (try (- a 1) n ))
+          (else false)))
+  (try (- n 1) n))
+```
+        
+The following Carmichael numbers all returns true for all values `a < n`.
+
+```
+(fermat-test-all 561)
+(fermat-test-all 1105)
+(fermat-test-all 1729)
+(fermat-test-all 2465)
+(fermat-test-all 2821)
+(fermat-test-all 6601)
+```
+
+Based on these fact we can conclude that the numbers above fool the Fermat test
