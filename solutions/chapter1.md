@@ -918,3 +918,20 @@ time the input increases by a factor 10, we only increase it by `1` (Because
 However as you see the difference is not `1` because we also execute it many
 times to get a better probability and proofnes of proving the given number to
 be a prime.  
+
+## 1.25
+
+It is wrong. Testing it with the expmod (let's call this expmod2) based on
+fast-expt we can see that after 4-5 couple of iterations it's getting to slow,
+so slow that it eats all the memory due the immense computing need. 
+
+This is because of taking the square of different values.
+
+1. The original `expmod` takes the square of ever decreasing values. It
+   basically takes the square of **remainders** so the calculations is more
+   faster
+
+2. The second `expmod2` takes the square of ever increasing values. Instead of
+   remainders, it takes the square of square numbers, which is increasing
+   quadratic. 
+
