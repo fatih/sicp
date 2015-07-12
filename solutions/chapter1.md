@@ -946,9 +946,10 @@ this is a tree recursion and grows exponentially. So the input increased to `2
 order of growth is: `O(n)`
 
 
-
 ## 1.27
 
+Instead of random numbers we need to test for integers satisfying `a < n`.
+Below is an implementation of it:
 
 ```lisp
 (define (fermat-test-all n)
