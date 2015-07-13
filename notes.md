@@ -69,4 +69,13 @@ Chapter notes. Partially from the book, but mostly my own words.
 * We can distribute a modulos operation like: `ab mod m` == `(((a mod m) (b mod m)) mod m)`
   This is uses in the `expmod` procedure. Appereantly this is also true: 
   `b ^ n mod m` == `((b * (b ^ (n - 1) mod m)) mod m)` not sure why...
+* I really love the examples, each one is iterating over the previous one,
+  making it enjoyable.
+* I've read that one can convert every recursive function into a iterative
+  function (in imperative languages) by using a `stack`. So I wonder if this so
+  called `stack` is the same as `state` variable we create while converting a
+  recursive process into an iterative one. Probably the so called stack is
+  something where the state is stored. Perhaps I'm going to learn more in the
+  latter chapters of SICP.
+
 
