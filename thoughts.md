@@ -76,5 +76,11 @@ Random thoughts while reading SICP.
   math. For example I've just learned a lot about modulo operations, Fermat's
   Little Theorem, what `congruent` means, etc.. On ther other hand I really
   like it, but it's just taking a lot of time.
+* 1.28 take a long time. The question is realy to terse and I had to read from
+  other sources. And this was another disaster because the Miller-Rabin-Test is
+  explained in a very different way than what's in SICP. So I had to rewind what
+  I've read from the other sources and focus only on the question itself. And
+  I've just tried to implement what's being ordered in the question, though I had
+  to check it out from other solutions.
 
 
