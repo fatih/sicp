@@ -972,3 +972,61 @@ The following Carmichael numbers all returns true for all values `a < n`.
 ```
 
 Based on these fact we can conclude that the numbers above fool the Fermat test
+
+## 1.28
+
+A check for `nontrivial square root of 1 modulo n` would be:
+
+```lisp
+(define (signal-check x n)
+  (if (and (not (or (= x 1) (= x (- n 1))))
+           (= (remainder (* x x) n) 1))
+      0
+      (remainder (* x x) n)))
+```
+
+As stated in the question, we signal with `0` if we detect a a nontrivial
+square root of 1. If it's not we do the regular modulo of the given number's
+square.
+
+Incorparating this into `expmod` gives us:
+
+```lisp
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (signal-check (expmod base (/ exp 2) m) m))
+        (else
+         (remainder (* base
+                       (expmod base (- exp 1) m))
+                    m))))
+```
+
+So we can check a single random number with:
+
+```lisp
+(define (miller-rabin-test n)
+  (define (try-it a)
+    (= (expmod a (- n 1) n) 1))
+  (try-it (+ 1 (random (- n 1)))))
+```
+
+To increase the probability, let us use `fast-prime?` with the new `miller-rabin-test` procedure:
+
+```lisp
+(define (fast-prime? n times)
+  (cond ((= times 0) true)
+        ((miller-rabin-test n) (fast-prime? n (- times 1)))
+        (else false)))
+```
+
+Testing it with the following expressions:
+
+(fast-prime? 561 10)
+(fast-prime? 1105 10)
+(fast-prime? 1729 10)
+(fast-prime? 2465 10)
+(fast-prime? 2821 10)
+(fast-prime? 6601 10)
+
+We can see that it always returns `false`, so Carmichael numbers can't fool it.
