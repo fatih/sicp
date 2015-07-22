@@ -1041,6 +1041,9 @@ Below is the Simpson's rule implementation. A couple of things here:
   between is grouped into the multiplies of `2` and `4`. For `2` the function
   begins with `a + 2h` and increases with `2h`. For `4`, it's the same as the
   previous one, just it begins with `a + h`
+* The last term can be computed for both `2` and `4` series when we supply
+  `n-2` and `n-1` for k. Example computation for series `2` would be: 
+  `(a +kh) = (a + (n-2)h) = (b - 2h)`
 
 ```lisp
 (define (simpson-rule f a b n)
@@ -1048,8 +1051,8 @@ Below is the Simpson's rule implementation. A couple of things here:
   (define (add-h x) (+ x (* 2 h)))
   (* (/ h 3) (+
               (f a)
-              (* 2 (sum f (+ a (* 2 h)) add-h b))
-              (* 4 (sum f (+ a h) add-h b))
+              (* 2 (sum f (+ a (* 2 h)) add-h (- b (* 2 h))))
+              (* 4 (sum f (+ a h) add-h (- b h)))
               (f (+ a (* n h))))))
 ```
 
@@ -1063,9 +1066,9 @@ For the `n = 100` and `n = 1000`:
 It results as:
 
 ```
-#e0.25666...
-#e0.25066...
+#e0.25
+#e0.25
 ```
 
-Compared to the `integral` procedure it's worse for small numbers of `n` but is
-much more better for larger numbers of `n`
+Compared to the previous `integral` procedure, this is much more better.
+
