@@ -82,5 +82,7 @@ Random thoughts while reading SICP.
   I've read from the other sources and focus only on the question itself. And
   I've just tried to implement what's being ordered in the question, though I had
   to check it out from other solutions.
+* Just got my SICP hard copy and discovered that the page numbers are
+  completely different. I'm actually at page 59, not 74 :)
 
 

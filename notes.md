@@ -77,5 +77,7 @@ Chapter notes. Partially from the book, but mostly my own words.
   recursive process into an iterative one. Probably the so called stack is
   something where the state is stored. Perhaps I'm going to learn more in the
   latter chapters of SICP.
+* Procedures that manipulate procedures are called higher-order procedures (I
+  think it's the same what we call `first class functions` in other languages)
 
 
