@@ -1030,3 +1030,42 @@ Testing it with the following expressions:
 (fast-prime? 6601 10)
 
 We can see that it always returns `false`, so Carmichael numbers can't fool it.
+
+## 1.29
+
+Below is the Simpson's rule implementation. A couple of things here:
+
+* Using `define h` simplifies the code tremendous
+* We split the original formula into four pieces to be able to use the `sum`
+  procedure. The first and last functions calls are added manually, anything
+  between is grouped into the multiplies of `2` and `4`. For `2` the function
+  begins with `a + 2h` and increases with `2h`. For `4`, it's the same as the
+  previous one, just it begins with `a + h`
+
+```lisp
+(define (simpson-rule f a b n)
+  (define h (/ (- b a) n))
+  (define (add-h x) (+ x (* 2 h)))
+  (* (/ h 3) (+
+              (f a)
+              (* 2 (sum f (+ a (* 2 h)) add-h b))
+              (* 4 (sum f (+ a h) add-h b))
+              (f (+ a (* n h))))))
+```
+
+For the `n = 100` and `n = 1000`:
+
+```lisp
+(simpson-rule cube 0 1 100)
+(simpson-rule cube 0 1 1000)
+```
+
+It results as:
+
+```
+#e0.25666...
+#e0.25066...
+```
+
+Compared to the `integral` procedure it's worse for small numbers of `n` but is
+much more better for larger numbers of `n`
