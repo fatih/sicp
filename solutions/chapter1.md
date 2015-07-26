@@ -1088,6 +1088,8 @@ The iterative process solution can be seen below:
 
 ## 1.31
 
+a.)
+
 The procedure `product` is as follow (recursive process implementation):
 
 ```lisp
@@ -1162,3 +1164,42 @@ Our first implementation was based on `recursive process`, so we implement the
 
 Note that this nearly identical to the iterative implementation of `sum`
 procedure (as expected).
+
+# 1.32
+
+a.)
+
+The implementation of accumulate is below (which is recursive process):
+
+```lisp
+(define (accumulate combiner null-value term a next b)
+  (if (> a b)
+      null-value
+      (combiner (term a) (accumulate combiner null-value term (next a) next b))))
+```
+
+
+Based on the `accumulate` procedure we can implement both `product` and `sum` as below:
+
+```lisp
+(define (product term a next b)
+  (accumulate * 1 term a next b))
+
+(define (sum term a next b)
+  (accumulate + 0 term a next b))
+```
+
+
+b. )
+
+The iterative process implementation is as followed:
+
+```lisp
+(define (accumulate-iter combiner null-value term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (combiner (term a) result))))
+  (iter a null-value))
+
+```
