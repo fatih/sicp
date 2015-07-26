@@ -1151,12 +1151,14 @@ b.)
 Our first implementation was based on `recursive process`, so we implement the
 `iterative process` as seen below:
 
+```lisp
 (define (product-iter term a next b)
   (define (iter a result)
     (if (> a b)
         result
         (iter (next a) (* (term a) result))))
   (iter a 1))
+```
 
 Note that this nearly identical to the iterative implementation of `sum`
 procedure (as expected).
