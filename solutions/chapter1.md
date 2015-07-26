@@ -1098,6 +1098,13 @@ The procedure `product` is as follow (recursive process implementation):
          (product term (next a) next b))))
 ```
 
+This is the same as the `sum` procedure with two changes:
+
+1. Instead of returning `0` we return `1` for the consequent result of the if
+   predicate. This is important because multiplying something with `0` at the
+   end would yield a wrong result.
+2. Instead of adding the `(term a)`, we multiply it.
+
 An example usage of a procedure calculating the products of a given range would
 be:
 
@@ -1138,3 +1145,18 @@ numerator into two parts, one which begins with 2,4,6,... and the other which
 begins with 4,6,8,..
  
 
+
+b.)
+ 
+Our first implementation was based on `recursive process`, so we implement the
+`iterative process` as seen below:
+
+(define (product-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (* (term a) result))))
+  (iter a 1))
+
+Note that this nearly identical to the iterative implementation of `sum`
+procedure (as expected).
