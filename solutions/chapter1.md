@@ -1022,12 +1022,14 @@ To increase the probability, let us use `fast-prime?` with the new `miller-rabin
 
 Testing it with the following expressions:
 
+```
 (fast-prime? 561 10)
 (fast-prime? 1105 10)
 (fast-prime? 1729 10)
 (fast-prime? 2465 10)
 (fast-prime? 2821 10)
 (fast-prime? 6601 10)
+```
 
 We can see that it always returns `false`, so Carmichael numbers can't fool it.
 
