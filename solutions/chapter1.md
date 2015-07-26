@@ -1086,3 +1086,55 @@ The iterative process solution can be seen below:
 ```
 
 
+## 1.31
+
+The procedure `product` is as follow (recursive process implementation):
+
+```lisp
+(define (product term a next b)
+  (if (> a b)
+      1
+      (* (term a)
+         (product term (next a) next b))))
+```
+
+An example usage of a procedure calculating the products of a given range would
+be:
+
+```lisp
+(define (product-integers a b)
+  (product identity a inc b))
+
+(product-integers 2 5)
+;; gives 2.3.4.5 -> 120
+```
+
+Using the a slightly modified version of above, we can simply implement the
+factorial procedure as:
+
+
+```lisp
+(define (factorial n)
+  (product identity 1 inc n))
+```
+
+The approximations of pi according to the formula can be implemented as
+followed (where `approx > 0`):
+
+```lisp
+(define (pi approx)
+  (define (inc-two n) (+ n 2))
+  (define (product-integers-two a b)
+    (product identity a inc-two b))
+  ( * 4
+      ( / (* (product-integers-two 4 (+ 4 (* 2 approx)))
+             (product-integers-two 2 (+ 2 (* 2 approx))))
+          (square (product-integers-two 3 (+ 3 (* 2 approx)))))))
+```
+
+The `approx` variable defines approximity of the procedure, the greater the
+number is the more precise is the final answer. The trick here is to split the
+numerator into two parts, one which begins with 2,4,6,... and the other which
+begins with 4,6,8,..
+ 
+
