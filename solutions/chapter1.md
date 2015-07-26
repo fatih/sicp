@@ -1072,3 +1072,17 @@ It results as:
 
 Compared to the previous `integral` procedure, this is much more better.
 
+## 1.30
+
+The iterative process solution can be seen below:
+
+```lisp
+(define (sum-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (+ (term a) result))))
+  (iter a 0))
+```
+
+
