@@ -1248,3 +1248,33 @@ Using this as:
 ```
 
 would yield: `87`
+
+b.)
+
+The implementation can be written as:
+
+```lisp
+(define (product-relative-primes n)
+  (define (relative-gcd? x) (= (gcd x n) 1))
+  (filtered-accumulate relative-gcd? * 1 identity 1 inc n))
+```
+
+where the gcd procedure is already known as:
+
+```lisp
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+```
+
+For example:
+
+```
+(product-relative-primes 10)
+```
+
+would procedure `189`, which is correct because there are four relatives to
+`10`, which are:
+
+`gcd(1,10)`, `gcd(3,10)`, `gcd(7,10)` and `gcd(9,10)`, so `1*3*7*9` -> `1289`
