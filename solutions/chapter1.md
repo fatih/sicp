@@ -1167,7 +1167,7 @@ Our first implementation was based on `recursive process`, so we implement the
 Note that this nearly identical to the iterative implementation of `sum`
 procedure (as expected).
 
-# 1.32
+## 1.32
 
 a.)
 
@@ -1204,4 +1204,30 @@ The iterative process implementation is as followed:
         (iter (next a) (combiner (term a) result))))
   (iter a null-value))
 
+```
+
+## 1.33
+
+The `filtered-accumulate` procedure can be written as:
+
+```lisp
+(define (filtered-accumulate filter combiner null-value term a next b)
+  (if (> a b)
+      null-value
+      (if (filter (term a))
+          (combiner (term a) (filtered-accumulate filter combiner null-value term (next a) next b))
+          (filtered-accumulate filter combiner null-value term (next a) next b))))
+```
+
+An example of summing even numbers for a given range could be:
+
+```lisp
+(define (sum-odd term a next b)
+  (define (even? n) (= (remainder n 2) 0))
+  (filtered-accumulate even? + 0 term a next b))
+
+(define (sum-odd-integers a b)
+  (sum-odd identity a inc b))
+
+(sum-odd-integers 1 4) ;; 2 + 4 -> 6
 ```
