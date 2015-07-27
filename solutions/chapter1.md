@@ -1214,7 +1214,7 @@ The `filtered-accumulate` procedure can be written as:
 (define (filtered-accumulate filter combiner null-value term a next b)
   (if (> a b)
       null-value
-      (if (filter (term a))
+      (if (filter a)
           (combiner (term a) (filtered-accumulate filter combiner null-value term (next a) next b))
           (filtered-accumulate filter combiner null-value term (next a) next b))))
 ```
@@ -1222,12 +1222,29 @@ The `filtered-accumulate` procedure can be written as:
 An example of summing even numbers for a given range could be:
 
 ```lisp
-(define (sum-odd term a next b)
-  (define (even? n) (= (remainder n 2) 0))
-  (filtered-accumulate even? + 0 term a next b))
-
 (define (sum-odd-integers a b)
-  (sum-odd identity a inc b))
+  (define (even? n) (= (remainder n 2) 0))
+  (filtered-accumulate even? + 0 identity a inc b))
 
 (sum-odd-integers 1 4) ;; 2 + 4 -> 6
 ```
+
+a.)
+
+The implementation would be (we assume we have a `prime?` procedure, you can
+easily implement it with our previous implementations, such as using the
+fast-divisor procedure or fermat's test):
+
+
+```lisp
+(define (sum-square-prime-numbers a b)
+  (filtered-accumulate prime? + 0 square a inc b))
+```
+
+Using this as:
+
+```
+(sum-square-prime-numbers 1 10)
+```
+
+would yield: `87`
