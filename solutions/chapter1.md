@@ -1277,4 +1277,4 @@ For example:
 would procedure `189`, which is correct because there are four relatives to
 `10`, which are:
 
-`gcd(1,10)`, `gcd(3,10)`, `gcd(7,10)` and `gcd(9,10)`, so `1*3*7*9` -> `1289`
+`gcd(1,10)`, `gcd(3,10)`, `gcd(7,10)` and `gcd(9,10)`, so `1*3*7*9` -> `189`
