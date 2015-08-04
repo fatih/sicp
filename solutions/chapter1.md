@@ -1304,3 +1304,10 @@ doesn't get it.  When run it, the error message is also obvious about it:
   arguments.:
 ```
 
+It can be seen clearer with the order of evaluation:
+
+```
+(f f)
+(f 2)
+(2 2) ;; fails here!
+```
