@@ -1278,3 +1278,29 @@ would procedure `189`, which is correct because there are four relatives to
 `10`, which are:
 
 `gcd(1,10)`, `gcd(3,10)`, `gcd(7,10)` and `gcd(9,10)`, so `1*3*7*9` -> `189`
+
+## 1.34
+
+Asking the interpreter to evaluate:
+
+```
+(f f)
+```
+
+We'll get an error. The reason is `f` is excepting a procedure. However in
+
+```lisp
+(define (f g)
+  (g 2))
+```
+
+we pass the number `2` to `f`. So `f` is expecting a procedure, however it
+doesn't get it.  When run it, the error message is also obvious about it:
+
+```
+. . application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: 2
+  arguments.:
+```
+
