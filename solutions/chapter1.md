@@ -1311,3 +1311,32 @@ It can be seen clearer with the order of evaluation:
 (f 2)
 (2 2) ;; fails here!
 ```
+
+## 1.35
+
+We know that the golden ratio formula is in the form of:
+
+`q^2 = q + 1`
+
+Let's dive each side with `q` and we have:
+
+`q = (q + 1) / q`
+
+which can be written as:
+
+`q = 1/q + 1`
+
+Now using this tranformation with the `fixed-point` procedure:
+
+
+```lisp
+(fixed-point (lambda (q) (+ 1 (/ 1 q)))
+             1.0)
+```
+
+the result is:
+
+```
+1.6180327868852458
+```
+
